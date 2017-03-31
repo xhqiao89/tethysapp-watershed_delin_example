@@ -1,4 +1,4 @@
-var app,jobInfo2;
+var app;
 
 require(["esri/Color",
               "esri/layers/ArcGISDynamicMapServiceLayer",
@@ -68,7 +68,6 @@ require(["esri/Color",
 
           function completeCallback(jobInfo) {
             console.log("getting data");
-            jobInfo2= jobInfo;
             gp.getResultData(jobInfo.jobId, "watershed_poly", displayWatershed);
           }
 
