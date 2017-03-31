@@ -27,7 +27,7 @@ require(["esri/Color",
             var borderLayer = new ArcGISDynamicMapServiceLayer("http://geoserver.byu.edu:6080/arcgis/rest/services/dan_ames/watershedborder/MapServer");
             map.addLayer(borderLayer);
 
-            gp = new Geoprocessor("http://geoserver.byu.edu:6080/arcgis/rest/services/dan_ames/watershed_delineation2/GPServer/WatershedDelineation");
+            gp = new Geoprocessor("http://geoserver.byu.edu:6080/arcgis/rest/services/dan_ames/watershed_delineation/GPServer/WatershedDelineation");
             gp.setOutputSpatialReference({
               wkid: 102100
             });
@@ -50,7 +50,7 @@ require(["esri/Color",
 
           function run_service(){
             var params = {
-              "Point": featureSet
+              "Input_raster_or_feature_pour_point_data": featureSet
              };
             gp.submitJob(params, completeCallback, statusCallback);
           }
@@ -73,7 +73,6 @@ require(["esri/Color",
           }
 
           function displayWatershed(result, messages) {
-              alert("123");
               var polySymbol = new SimpleFillSymbol();
               polySymbol.setOutline(new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0, 0, 0, 0.5]), 1));
               polySymbol.setColor(new Color([255, 127, 0, 0.7]));
